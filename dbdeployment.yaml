@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-deployment
+  namespace: database
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - name: mysql
+          image: 607026328084.dkr.ecr.us-east-1.amazonaws.com/assignment-1-db:v1.1
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: pw
