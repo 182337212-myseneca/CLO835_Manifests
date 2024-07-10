@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: db-v1
+  namespace: database
+  labels:
+    app: mysql
+spec:
+  containers:
+    - image: 607026328084.dkr.ecr.us-east-1.amazonaws.com/assignment-1-db:v1.1
+      name: mysql
+      env:
+        - name: DB_ROOT_PASSWORD
+          value: "pw"
+        - name: DB_DATABASE
+          value: "employees"
+        - name: DB_USER
+          value: "root"
+        - name: DB_PASSWORD
+          value: "pw"
+  imagePullSecrets:
+    - name: ecr-secret
